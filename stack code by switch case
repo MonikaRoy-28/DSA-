@@ -1,0 +1,74 @@
+import java.util.*;
+public class Main{
+   
+    public int max;
+    int[] arr = new int[max];
+   
+    public int tos=-1;
+   
+   
+    public Main(int max)
+    {
+        this.max=max;
+   
+    }
+    public void push(int data){
+        if(tos==max-1){
+            System.out.println("THE STACK IS FULL/ OVERFLOW");
+            return;
+        }
+        else{
+            tos++;
+            arr[tos]=data;
+            System.out.println("Pushed ELEMENT:"+ data);
+        }
+    }
+    public void pop(){
+        if(tos==-1){
+            System.out.println("THE STACK IS EMPTY/ UNDERFLOW");
+            return;
+        }
+        else{
+            int poped=arr[tos];
+            tos--;
+            System.out.println("Poped ELEMENT:"+ poped);
+        }
+    }
+    public void peep(){
+        if(tos==-1){
+            System.out.println("EMPTY ELEMENT");
+            return;
+        }
+        else{
+            int peep=arr[tos];
+            System.out.println("Peeped ELEMENT:"+ peep);
+        }
+    }
+public static void main(String [] args){
+   
+    Scanner sc = new Scanner(System.in);
+    System.out.println("ENTER THE MAX VALUE OF YOUR ARRAY");
+    int maxSize=sc.nextInt();
+    Main a=new Main(maxSize);
+   
+   
+    System.out.println("ENTER 1 FOR PUSH, 2 FOR POP, 3 FOR PEEP,4 FOR EXIT");
+    int choice=sc.nextInt();
+    switch (choice){
+        case 1:
+            a.push(99);
+            a.push(59);
+            a.push(779);
+            a.push(934);
+        case 2:
+            a.pop();
+        case 3:
+            a.peep();
+        case 4:
+            System.out.println("YOU ARE EXITED FROM THE CODE");
+             sc.close();
+    }
+
+}
+
+}
