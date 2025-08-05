@@ -1,0 +1,61 @@
+import java.util.*;
+public class Main{
+    public final int max=5;
+    public int[] arr = new int[max];
+    public int tos=-1;
+    public void push(int data){
+        if(tos==max-1){
+            System.out.println("THE STACK IS FULL/ OVERFLOW");
+            return;
+        }
+        else{
+            tos++;
+            arr[tos]=data;
+            System.out.println("Pushed ELEMENT:"+ data);
+        }
+    }
+    public void pop(){
+        if(tos==-1){
+            System.out.println("THE STACK IS EMPTY/ UNDERFLOW");
+            return;
+        }
+        else{
+       
+            int poped=arr[tos];
+            tos--;
+            System.out.println("Poped ELEMENT:"+ poped);
+        }
+    }
+    public void peep(){
+        if(tos==-1){
+            System.out.println("EMPTY ELEMENT");
+            return;
+        }
+        else{
+            int peep=arr[tos];
+            System.out.println("Peeped ELEMENT:"+ peep);
+        }
+    }
+
+public static void main(String [] args){
+    Main a = new Main();
+    a.push(11);
+    a.push(44);
+    a.push(33);
+    a.push(22);
+    a.push(55);
+    a.push(66);
+    a.push(77);
+    a.push(88);
+    a.push(99);
+    a.peep();
+    a.pop();
+    a.pop();
+    a.pop();
+    a.peep();
+    a.pop();
+    a.pop();
+    a.pop();
+   
+}  
+}
