@@ -1,0 +1,100 @@
+class NodeC {
+    int data;
+    NodeC next;
+
+    public NodeC(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class CircularLinkedList {
+    NodeC head;
+    NodeC tail;
+
+    public void addFirst(int data) {
+        NodeC newNode = new NodeC(data);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+            newNode.next = head; // Point to itself
+        } else {
+            newNode.next = head;
+            tail.next = newNode;
+            head = newNode;
+        }
+        System.out.println("Added " + data + " to the beginning.");
+    }
+
+    public void addLast(int data) {
+        NodeC newNode = new NodeC(data);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+            newNode.next = head; // Point to itself
+        } else {
+            tail.next = newNode;
+            newNode.next = head;
+            tail = newNode;
+        }
+        System.out.println("Added " + data + " to the end.");
+    }
+
+    public void deleteFirst() {
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+        System.out.println("Deleted " + head.data + " from the beginning.");
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+            tail.next = head; // Update the tail's next to the new head
+        }
+    }
+
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+        System.out.println("Deleted " + tail.data + " from the end.");
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            NodeC current = head;
+            while (current.next != tail) {
+                current = current.next;
+            }
+            tail = current;
+            tail.next = head; // Update the new tail's next to the head
+        }
+    }
+
+    public void display() {
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+        NodeC current = head;
+        System.out.print("Circular Linked List: ");
+        do {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        } while (current != head);
+        System.out.println("(head)");
+    }
+
+    public static void main(String[] args) {
+        CircularLinkedList cll = new CircularLinkedList();
+        cll.addFirst(10);
+        cll.addLast(20);
+        cll.addLast(30);
+        cll.addFirst(5);
+        cll.display();
+        cll.deleteFirst();
+        cll.deleteLast();
+        cll.display();
+    }
+}
